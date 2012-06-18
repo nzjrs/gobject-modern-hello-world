@@ -1,8 +1,7 @@
 #include <gtk/gtk.h>
 #include <math.h>
 
-#include "colorbox.h"
-#include "point.h"
+#include "abccolorbox.h"
 
 #define ABC_COLOR_BOX_DEFAULT_SIZE 100
 

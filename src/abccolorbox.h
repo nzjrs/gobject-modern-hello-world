@@ -2,7 +2,7 @@
 #define __ABC_COLOR_BOX_H__
 
 #include <gtk/gtk.h>
-#include "point.h"
+#include "abcpoint.h"
 
 G_BEGIN_DECLS
 

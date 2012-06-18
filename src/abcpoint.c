@@ -1,5 +1,5 @@
 #include <glib-object.h>
-#include "point.h"
+#include "abcpoint.h"
 
 G_DEFINE_TYPE(AbcPoint, abc_point, G_TYPE_OBJECT);
 

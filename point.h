@@ -1,31 +1,31 @@
-#ifndef __POINT_H__
-#define __POINT_H__
+#ifndef __ABC_POINT_H__
+#define __ABC_POINT_H__
 
 #include <glib-object.h>
 
-typedef struct _PointClass PointClass;
-typedef struct _Point      Point;
+typedef struct _AbcPointClass AbcPointClass;
+typedef struct _AbcPoint      AbcPoint;
 
-struct _PointClass {
+struct _AbcPointClass {
     GObjectClass parent;
-    void (*clear) (Point *self);
-    void (*print) (Point *self);
+    void (*clear) (AbcPoint *self);
+    void (*print) (AbcPoint *self);
 };
 
-struct _Point {
+struct _AbcPoint {
     GObject  parent;
     gint     x;
     gint     y;
 };
 
-#define TYPE_POINT           (point_get_type             ())
-#define POINT(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_POINT, Point))
-#define POINT_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST    ((cls), TYPE_POINT, PointClass))
-#define IS_POINT(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TYPE_POINT))
-#define IS_POINT_CLASS(cls)  (G_TYPE_CHECK_CLASS_TYPE    ((cls), TYPE_POINT))
-#define POINT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS  ((obj), TYPE_POINT, PointClass))
+#define ABC_TYPE_POINT           (abc_point_get_type         ())
+#define ABC_POINT(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), ABC_TYPE_POINT, AbcPoint))
+#define ABC_POINT_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST    ((cls), ABC_TYPE_POINT, AbcPointClass))
+#define IS_ABC_POINT(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), ABC_TYPE_POINT))
+#define IS_ABC_POINT_CLASS(cls)  (G_TYPE_CHECK_CLASS_TYPE    ((cls), ABC_TYPE_POINT))
+#define ABC_POINT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS  ((obj), ABC_TYPE_POINT, AbcPointClass))
 
-GType  point_get_type  (void);
-void   point_print     (Point *self);
+GType  abc_point_get_type  (void);
+void   abc_point_print     (AbcPoint *self);
 
 #endif

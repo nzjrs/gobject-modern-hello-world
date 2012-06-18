@@ -43,7 +43,7 @@ struct _GtkColorBoxClass
 GType gtk_color_box_get_type (void);
 
 GtkWidget *gtk_color_box_new (void);
-void       gtk_color_box_set_point (GtkWidget *box, Point *point);
+void       gtk_color_box_set_point (GtkWidget *box, AbcPoint *point);
 
 G_END_DECLS
 

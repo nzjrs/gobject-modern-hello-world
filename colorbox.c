@@ -18,7 +18,7 @@
 #define GTK_COLOR_BOX_DEFAULT_SIZE 100
 
 struct _GtkColorBoxPrivate {
-    Point *point;
+    AbcPoint *point;
 };
 
 
@@ -76,7 +76,7 @@ gtk_color_box_init (GtkColorBox *clock)
 }
 
 void
-gtk_color_box_set_point (GtkWidget *box, Point *point)
+gtk_color_box_set_point (GtkWidget *box, AbcPoint *point)
 {
 
 }

@@ -1,7 +1,7 @@
 #include <glib-object.h>
 #include "point.h"
 
-G_DEFINE_TYPE(Point, point, G_TYPE_OBJECT);
+G_DEFINE_TYPE(AbcPoint, abc_point, G_TYPE_OBJECT);
 
 enum {
     PROP_0,
@@ -17,23 +17,23 @@ enum {
 static guint point_signals[LAST_SIGNAL] = {0};
 
 /* virtual print method that calls whatever is in the classes vtable  */
-void point_print (Point *self) {
-    POINT_GET_CLASS(self)->print(self);
+void abc_point_print (AbcPoint *self) {
+    ABC_POINT_GET_CLASS(self)->print(self);
 }
 
-static void point_print_real (Point *self) {
+static void abc_point_print_real (AbcPoint *self) {
     g_print("x: %d, y: %d\n", self->x, self->y);
 }
 
-static void point_clear (Point *self) {
+static void abc_point_clear (AbcPoint *self) {
     g_object_set(self, "x", 0, "y", 0, NULL);
 }
 
-static void point_get_property (GObject    *obj,
+static void abc_point_get_property (GObject    *obj,
                                 guint       prop_id,
                                 GValue     *value,
                                 GParamSpec *pspec) {
-    Point *point = POINT(obj);
+    AbcPoint *point = ABC_POINT(obj);
 
     switch (prop_id) {
     case PROP_X:
@@ -48,11 +48,11 @@ static void point_get_property (GObject    *obj,
     }
 }
 
-static void point_set_property (GObject      *obj,
+static void abc_point_set_property (GObject      *obj,
                                 guint         prop_id,
                                 const GValue *value,
                                 GParamSpec   *pspec) {
-    Point *point = POINT(obj);
+    AbcPoint *point = ABC_POINT(obj);
 
     switch (prop_id) {
     case PROP_X: {
@@ -72,19 +72,19 @@ static void point_set_property (GObject      *obj,
 }
 
 static void
-point_init (Point *point)
+abc_point_init (AbcPoint *point)
 {
 
 }
 
-static void point_class_init (PointClass *cls) {
+static void abc_point_class_init (AbcPointClass *cls) {
     GObjectClass *g_object_class = G_OBJECT_CLASS(cls);
     
-    g_object_class->get_property = point_get_property;
-    g_object_class->set_property = point_set_property;
+    g_object_class->get_property = abc_point_get_property;
+    g_object_class->set_property = abc_point_set_property;
     
-    cls->clear = point_clear;
-    cls->print = point_print_real;
+    cls->clear = abc_point_clear;
+    cls->print = abc_point_print_real;
     
     g_object_class_install_property(
         g_object_class,
@@ -106,7 +106,7 @@ static void point_class_init (PointClass *cls) {
     
     point_signals[EQUAL] = g_signal_new(
         "coordinates-equal",                   /* signal_name */
-        TYPE_POINT,                            /* itype */
+        ABC_TYPE_POINT,                            /* itype */
         G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED, /* signal_flags */
         0,                                     /* class_offset */
         NULL,                                  /* accumulator */

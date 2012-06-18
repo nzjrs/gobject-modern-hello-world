@@ -1,7 +1,6 @@
 #include <gtk/gtk.h>
 
-#include "point.h"
-#include "colorbox.h"
+#include "abc.h"
 
 int
 main (int argc, char **argv)

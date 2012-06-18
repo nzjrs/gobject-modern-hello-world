@@ -13,8 +13,8 @@ main (int argc, char **argv)
     gtk_init (&argc, &argv);
 
     point = g_object_new (ABC_TYPE_POINT, "x", 5, "y", 17, NULL);
-    clock = gtk_color_box_new ();
-    gtk_color_box_set_point (clock, point);
+    clock = abc_color_box_new ();
+    abc_color_box_set_point (ABC_COLOR_BOX(clock), point);
 
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_container_add (GTK_CONTAINER (window), clock);

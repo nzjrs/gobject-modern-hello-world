@@ -5,7 +5,7 @@ AC_CONFIG_MACRO_DIR([build])
 AC_CONFIG_AUX_DIR([build])
 AC_CONFIG_SRCDIR([src/abc.h])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE([1.11 dist-bzip2 no-dist-gzip -Wall foreign no-define])
+AM_INIT_AUTOMAKE([1.11 dist-bzip2 no-dist-gzip -Wall foreign no-define subdir-objects])
 
 LT_PREREQ([2.2.6])
 LT_INIT([])

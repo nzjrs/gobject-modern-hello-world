@@ -3,8 +3,9 @@
 
 #include <glib-object.h>
 
-typedef struct _AbcPointClass AbcPointClass;
-typedef struct _AbcPoint      AbcPoint;
+typedef struct _AbcPointPrivate AbcPointPrivate;
+typedef struct _AbcPointClass   AbcPointClass;
+typedef struct _AbcPoint        AbcPoint;
 
 struct _AbcPointClass {
     GObjectClass parent;
@@ -14,8 +15,8 @@ struct _AbcPointClass {
 
 struct _AbcPoint {
     GObject  parent;
-    gint     x;
-    gint     y;
+
+	AbcPointPrivate *priv;
 };
 
 #define ABC_TYPE_POINT           (abc_point_get_type         ())

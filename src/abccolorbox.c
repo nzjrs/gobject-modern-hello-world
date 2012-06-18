@@ -22,7 +22,9 @@ abc_color_box_draw (GtkWidget *widget, cairo_t *cr)
     cairo_fill (cr);
 
     if (self->priv->point) {
-        cairo_arc(cr, self->priv->point->x, self->priv->point->y, 5.0, 0.0, 2 * M_PI);
+        guint x,y;
+        g_object_get(self->priv->point, "x", &x, "y", &y, NULL);
+        cairo_arc(cr, x, y, 5.0, 0.0, 2 * M_PI);
         cairo_set_source_rgb (cr, 0, 1, 0);
         cairo_fill(cr);
     }
@@ -69,12 +71,26 @@ abc_color_box_init (AbcColorBox *clock)
     gtk_widget_set_has_window (GTK_WIDGET (clock), FALSE);
 }
 
+static void
+_point_changed (GObject *gobject, GParamSpec *pspec, gpointer user_data)
+{
+    AbcColorBox *box = ABC_COLOR_BOX(user_data);
+    gtk_widget_queue_draw (box);
+}
+
 void
 abc_color_box_set_point (AbcColorBox *box, AbcPoint *point)
 {
     AbcColorBox *self = ABC_COLOR_BOX(box);
-    self->priv->point = point;
+    if (self->priv->point)
+        g_object_unref(self->priv->point);
+
     g_object_ref(point);
+    g_signal_connect(G_OBJECT(point), "notify::x", G_CALLBACK(_point_changed), self);
+    g_signal_connect(G_OBJECT(point), "notify::y", G_CALLBACK(_point_changed), self);
+    self->priv->point = point;
+
+    gtk_widget_queue_draw (GTK_WIDGET(box));
 }
 
 GtkWidget *

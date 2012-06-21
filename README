@@ -1,0 +1,9 @@
+Install prerequisites on Ubuntu Precise::
+
+    apt-get install gobject-introspection libgtk-3-dev
+
+To build from the git repository::
+
+    ./autogen.sh
+    ./configure
+    make
